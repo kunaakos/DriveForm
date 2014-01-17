@@ -1,0 +1,22 @@
+{
+  "name": "DriveForm",
+  "version": "0.0.0",
+  "homepage": "https://github.com/kunaakos/DriveForm",
+  "authors": [
+    "Kun Akos <kunaakos@gmail.com>"
+  ],
+  "description": "A simple PHP form that submits data (and saves uploaded files) to Google Drive.",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3"
+  }
+}
