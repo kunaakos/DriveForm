@@ -10,28 +10,27 @@
     </head>
     <body>
 
+        <div id="contact_form">
+            <form name="contact" action="">
+                <div>
+                    <label for="name" id="name_label">Name</label>
+                    <input type="text" name="name" id="name" size="30" value="" class="text-input" />
+                </div>    
+                <div>
+                    <label for="email" id="email_label">Email</label>
+                    <input type="text" name="email" id="email" size="30" value="" class="text-input" />
+                </div>    
+                <div>
+                    <label for="phone" id="phone_label">Phone</label>
+                    <input type="text" name="phone" id="phone" size="30" value="" class="text-input" />
+                </div>
+                <div>    
+                    <input type="submit" name="submit" class="button" id="submit_btn" value="Send" formaction="process.php"/>
+                </div>    
+            </form>
+        </div> 
 
         <script src="bower_components/jquery/jquery.min.js"></script>
         <script src="js/app.js"></script>
     </body>
 </html>
-
-<?php
-
-// require_once 'google-api-php-client/src/Google_Client.php';
-// require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
-
-// // client_id, client_secret, redirect_uri, refresh_token
-// $stored = json_decode(file_get_contents('auth.json'));
-
-// $client = new Google_Client();
-
-// $client->setClientId($stored->client_id);
-// $client->setClientSecret($stored->client_secret);
-// $client->setRedirectUri($stored->redirect_uri);
-// $client->setScopes(array('https://www.googleapis.com/auth/drive'));
-// $client->refreshToken($stored->refresh_token);
-
-// $service = new Google_DriveService($client);
-
-?>
