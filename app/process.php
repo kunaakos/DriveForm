@@ -9,6 +9,18 @@ require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
 // foreach ($_POST as $key => $value) {
 //     echo $key . "= " . $value . "\n";
 // }
+print_r($_POST);
+// print_r($_FILES);
+// print_r($_POST);
+
+// foreach ($_FILES["files"]["error"] as $key => $error) {  
+//   if ($error == UPLOAD_ERR_OK) {  
+//     $name = $_FILES["files"]["name"][$key];  
+//     //move_uploaded_file( $_FILES["files"]["tmp_name"][$key], "uploads/" . $_FILES['files']['name'][$key]);  
+//   }  
+// }  
+  
+echo "<h2>What</h2>";  
 
 // get client_id, client_secret, redirect_uri, refresh_token
 $stored = json_decode(file_get_contents('auth.json'));
@@ -36,7 +48,7 @@ foreach ($_POST as $key => $value) {
     if (isset($inputs[$key]->fileName)) {
         $fileName = $value; 
     }
-}
+};
 
 // filename stamp
 $fileName .= " @ " . date('d M Y H:i:s');

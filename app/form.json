@@ -35,5 +35,9 @@
       "Awwwww flufffy!",
       "Furry alarm clocks."
     ]
+  },
+    {
+    "type": "file",
+    "label": "Choose your favorite cat photo!"
   }
 ]

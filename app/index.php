@@ -11,7 +11,7 @@
     <body>
 
         <div id="contact_form">
-            <form>
+            <form method="post" enctype="multipart/form-data">
 
 <?php
 $inputs = json_decode(file_get_contents('form.json'));
@@ -28,22 +28,29 @@ foreach ($inputs as $key => $input) {
         case 'text':
             $placeholder = " ";
             echo "<label>" . $label . "</label><br>\n";
-            echo "<input type=\"text\" placeholder=\"" . $placeholder . "\"/>\n";
+            echo "<input name=\"" . $key . "\" type=\"text\" placeholder=\"" . $placeholder . "\"/><br>\n";
             break;
         
         case 'radio':
             if (isset($input->oneLiner)) {
                 $break = "";
+                $end = "<br>";
             } else {
                 $break = "<br>";
+                $end = "";
             }
-            echo "<label name=\"" . $key . "\">" . $label . "</label>". $break . "\n";
-
+            echo "<label>" . $label . "</label>". $break . "\n";
             foreach ($input->values as $value) {
-                echo "<input type=\"radio\" name=\"radio" . $key . "\" value=\"" . $value ."\">" . $value . $break . "\n";
+                echo "<input type=\"radio\" name=\"" . $key . "\" value=\"" . $value ."\">" . $value . $break . "\n";
             }
+            echo $end;
             break;
-            
+
+        case 'file':
+            echo "<label>" . $label . "</label><br>\n";
+            echo "<input name=\"" . $key . "\" type=\"file\" name=\"file\"/>";
+            echo "<br>";
+            break;            
     }
     
     echo "</div>\n";
@@ -54,6 +61,7 @@ foreach ($inputs as $key => $input) {
                 </div>    
             </form>
         </div> 
+        <div id="feedback"></div>
 
         <script src="bower_components/jquery/jquery.min.js"></script>
         <script src="js/app.js"></script>
