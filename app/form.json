@@ -1,0 +1,19 @@
+[
+  {
+    "type": "text",
+    "label": "Name",
+    "fileName": true
+  },
+  {
+    "type": "text",
+    "label": "Email"
+  },
+  {
+    "type": "text",
+    "label": "Address"
+  },
+  {
+    "type": "text",
+    "label": "Phone"
+  }
+]

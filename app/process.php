@@ -1,11 +1,14 @@
 <?php
+
+// $start_time = microtime(TRUE);
+
 require_once 'google-api-php-client/src/Google_Client.php';
 require_once 'google-api-php-client/src/contrib/Google_DriveService.php';
 
-// get POST data
-$name = $_POST['name'];
-$email = $_POST['email'];
-$phone = $_POST['phone'];
+// // echo POST data
+// foreach ($_POST as $key => $value) {
+//     echo $key . "= " . $value . "\n";
+// }
 
 // get client_id, client_secret, redirect_uri, refresh_token
 $stored = json_decode(file_get_contents('auth.json'));
@@ -22,16 +25,27 @@ $client->refreshToken($stored->refresh_token);
 // connect to Drive
 $service = new Google_DriveService($client);
 
-// generate file contents
-$data  = "Name: " . $name . "\n";
-$data .= "Email: " . $email . "\n";
-$data .= "Phone: " . $phone;
+// generate file content
+$data = "";
+$fileName = "N/A";
+
+$inputs = json_decode(file_get_contents('form.json'));
+
+foreach ($_POST as $key => $value) {
+    $data .= $inputs[$key]->label . ": " . $value . "\n";   
+    if (isset($inputs[$key]->fileName)) {
+        $fileName = $value; 
+    }
+}
+
+// filename stamp
+$fileName .= " @ " . date('d M Y H:i:s');
 
 // create files
 try {
     // parent folder
     $folder = new Google_DriveFile();
-    $folder->setTitle($name . " @ " . date('d M Y H:i:s'));
+    $folder->setTitle($fileName);
     $folder->setMimeType('application/vnd.google-apps.folder');
     $parentFolder = $service->files->insert(
         $folder,
@@ -67,5 +81,8 @@ try {
     echo "Error.";
 
 }
+
+// $end_time = microtime(TRUE);
+// echo $end_time - $start_time;
 
 ?>

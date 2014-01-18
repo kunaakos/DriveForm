@@ -11,21 +11,25 @@
     <body>
 
         <div id="contact_form">
-            <form name="contact" action="">
-                <div>
-                    <label for="name" id="name_label">Name</label>
-                    <input type="text" name="name" id="name" size="30" value="" class="text-input" />
-                </div>    
-                <div>
-                    <label for="email" id="email_label">Email</label>
-                    <input type="text" name="email" id="email" size="30" value="" class="text-input" />
-                </div>    
-                <div>
-                    <label for="phone" id="phone_label">Phone</label>
-                    <input type="text" name="phone" id="phone" size="30" value="" class="text-input" />
-                </div>
-                <div>    
-                    <input type="submit" name="submit" class="button" id="submit_btn" value="Send" formaction="process.php"/>
+            <form>
+
+<?php
+$inputs = json_decode(file_get_contents('form.json'));
+// echo json_encode($inputs);
+
+// generate input fields
+foreach ($inputs as $key => $input) {
+    $divID = "formdata" . $key;
+    $label = $input->label;
+    $placeholder = " ";
+
+    echo "<div id=\"" . $divID . "\" class=\"formdata\">\n";
+    echo "  <label>" . $label . "</label>\n";
+    echo "  <input type=\"text\" placeholder=\"" . $placeholder . "\"/>\n";
+    echo "</div>\n";
+}
+?>               <div>    
+                    <input type="submit" value="Send" formaction="process.php"/>
                 </div>    
             </form>
         </div> 
