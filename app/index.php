@@ -21,12 +21,33 @@ $inputs = json_decode(file_get_contents('form.json'));
 foreach ($inputs as $key => $input) {
     $divID = "formdata" . $key;
     $label = $input->label;
-    $placeholder = " ";
-
+    
     echo "<div id=\"" . $divID . "\" class=\"formdata\">\n";
-    echo "  <label>" . $label . "</label>\n";
-    echo "  <input type=\"text\" placeholder=\"" . $placeholder . "\"/>\n";
+    
+    switch ($input->type) {
+        case 'text':
+            $placeholder = " ";
+            echo "<label>" . $label . "</label><br>\n";
+            echo "<input type=\"text\" placeholder=\"" . $placeholder . "\"/>\n";
+            break;
+        
+        case 'radio':
+            if (isset($input->oneLiner)) {
+                $break = "";
+            } else {
+                $break = "<br>";
+            }
+            echo "<label name=\"" . $key . "\">" . $label . "</label>". $break . "\n";
+
+            foreach ($input->values as $value) {
+                echo "<input type=\"radio\" name=\"radio" . $key . "\" value=\"" . $value ."\">" . $value . $break . "\n";
+            }
+            break;
+            
+    }
+    
     echo "</div>\n";
+
 }
 ?>               <div>    
                     <input type="submit" value="Send" formaction="process.php"/>

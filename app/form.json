@@ -15,5 +15,25 @@
   {
     "type": "text",
     "label": "Phone"
+  },
+  {
+    "type": "radio",
+    "oneLiner": true,
+    "label": "Cats",
+    "values": [
+      "one",
+      "two",
+      "three",
+      "moar"
+    ]
+  },
+  {
+    "type": "radio",
+    "label": "How would you describe your cat(s)?",
+    "values": [
+      "Cats in general are douchebags, and mine are no exception.",
+      "Awwwww flufffy!",
+      "Furry alarm clocks."
+    ]
   }
 ]

@@ -1,0 +1,12 @@
+.formdata {
+    margin: 20px auto;
+}
+
+label {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+input[type=text]{
+    width: 25%;
+}
